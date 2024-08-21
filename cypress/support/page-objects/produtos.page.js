@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+const admin = require('../../fixtures/administrador.json');
 
 class ProdutosPage {
 
@@ -23,8 +24,8 @@ class ProdutosPage {
             method: 'POST',
             url: 'login',
             body: {
-                email: 'fulano@qa.com',
-                password: 'teste'
+                email: admin.email,
+                password: admin.password
             },
         }).then((response) => {
             this.token = response.body.authorization;
@@ -58,7 +59,7 @@ class ProdutosPage {
 
     /**
      * Faz a requisição para listar produtos
-     * @returns {Promise} Promessa que resolve com os dados da resposta
+     * @returns {Promise}
      */
     listarProdutos() {
         return cy.request({
@@ -94,7 +95,7 @@ class ProdutosPage {
      * Edita um produto
      * @param {string} produto_id
      * @param {Produto} produto
-     * @returns {Promise} Promessa que resolve com os dados da resposta
+     * @returns {Promise} 
      */
     editarProduto(produto_id, produto) {
         return cy.request({
@@ -116,7 +117,7 @@ class ProdutosPage {
     /**
      * Deleta um produto
      * @param {string} produto_id
-     * @returns {Promise} Promessa que resolve com os dados da resposta
+     * @returns {Promise} 
      */
     deletarProduto(produto_id) {
         return cy.request({
@@ -124,7 +125,7 @@ class ProdutosPage {
             url: `produtos/${produto_id}`,
             headers: {
                 authorization: this.token
-            }
+            }, failOnStatusCode: false
         }).then((responseData) => {
             return cy.wrap({
                 status: responseData.status,
