@@ -1,5 +1,4 @@
 import { faker } from "@faker-js/faker";
-import { json } from "body-parser";
 
 class ProdutosPage {
 
