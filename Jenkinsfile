@@ -40,7 +40,7 @@ pipeline {
         stage('Executar testes com Cypress') {
             steps {
                 ansiColor('css') {
-                    sh 'npx cypress run'
+                    sh 'npm test'
                 }
             }
         }
