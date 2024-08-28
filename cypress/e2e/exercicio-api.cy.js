@@ -56,12 +56,12 @@ describe('Testes da Funcionalidade Usuários', () => {
   it('Deve deletar um usuário previamente cadastrado', () => {
     cy.criarUsuarioAleatorio().then((usuario) => {
       cy.criarUsuario(usuario).then((response) => {
-        cy.deletarUsuario(usuario._id).then((response) => {
+        cy.deletarUsuario(response.body._id).then((response) => {
           expect(response.status).to.eq(200)
           expect(response.body.message).to.eq('Registro excluído com sucesso')
         });
       });
-    });
+  });
   });
 
 
