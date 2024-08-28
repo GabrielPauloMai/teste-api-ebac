@@ -139,11 +139,8 @@ class ProdutosPage {
      * @returns {string}
      * */
     obterProdutoAleatorio() {
-        this.criarProduto(this.gerarProduto())
-        return this.listarProdutos().then((response) => {
-            return response.body.produtos[
-                Math.floor(Math.random() * (response.body.quantidade - 0 + 1))
-                ]._id
+        this.criarProduto(this.gerarProduto()).then((response) => {
+            return response.body._id
         })
     }
 }
