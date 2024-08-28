@@ -61,10 +61,11 @@ class ProdutosPage {
      * Faz a requisição para listar produtos
      * @returns {Promise}
      */
-    listarProdutos() {
+    listarProdutos(id=null) {
+
         return cy.request({
             method: 'GET',
-            url: 'produtos',
+            url: id ? `produtos/${id}` : 'produtos'
         }).then((responseData) => {
             return cy.wrap({
                 status: responseData.status,
@@ -139,7 +140,7 @@ class ProdutosPage {
      * @returns {string}
      * */
     obterProdutoAleatorio() {
-        this.criarProduto(this.gerarProduto()).then((response) => {
+        return this.criarProduto(this.gerarProduto()).then((response) => {
             return response.body._id
         })
     }
