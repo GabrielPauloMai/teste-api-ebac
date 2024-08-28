@@ -31,17 +31,23 @@ describe('Teste de API - Produtos', () => {
 
   it('Deve validar mensagem de produto já cadastrado - POST', () => {
 
-    const produto = {
-      nome: 'Samsung 60 polegadas',
-      preco: 5240,
-      descricao: 'TV',
-      quantidade: 49977
-    }
-
-    ProdutosPage.criarProduto(produto).then((response) => {
+    ProdutosPage.listarProdutos().then((response) => {
+      let produtoregistrado = response.body.produtos[0]
+      const produto = {
+        nome: produtoregistrado.nome,
+        preco: produtoregistrado.preco,
+        descricao: produtoregistrado.descricao,
+        quantidade: produtoregistrado.quantidade
+      }
+      cy.log(produto)
+      ProdutosPage.criarProduto(produto).then((response) => {
       expect(response.status).to.eq(400)
       expect(response.body.message).to.equal('Já existe produto com esse nome')
     })
+
+    })
+
+
 
   })
 
