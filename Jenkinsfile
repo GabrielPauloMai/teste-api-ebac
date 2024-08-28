@@ -20,6 +20,13 @@ pipeline {
             steps {
                 ansiColor('css') {
                     sh 'npx serverest &'
+                }
+            }
+        }
+        
+        stage('Aguardar Serverest') {
+            steps {
+                script {
                     sleep(time: 5, unit: 'SECONDS')
                 }
             }
