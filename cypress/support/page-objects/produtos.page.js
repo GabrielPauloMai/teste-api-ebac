@@ -139,7 +139,7 @@ class ProdutosPage {
      * @returns {string}
      * */
     obterProdutoAleatorio() {
-        this.criarProduto(ProdutosPage.gerarProduto())
+        this.criarProduto(this.gerarProduto())
         return this.listarProdutos().then((response) => {
             return response.body.produtos[
                 Math.floor(Math.random() * (response.body.quantidade - 0 + 1))
