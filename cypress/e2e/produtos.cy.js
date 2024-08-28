@@ -1,6 +1,6 @@
 /// reference types="cypress" />;
-import ProdutosPage from "../../../teste-api-cypress/cypress/support/page-objects/produtos.page";
-import produtosContratos from "../../../teste-api-cypress/cypress/contratos/produtos.contratos";
+import ProdutosPage from "../support/page-objects/produtos.page";
+import produtosContratos from "../contracts/produtos.contract";
 
 describe('Teste de API - Produtos', () => {
   before(() => {
