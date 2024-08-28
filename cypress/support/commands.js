@@ -108,6 +108,8 @@ Cypress.Commands.add('criarUsuarioAleatorio', () => {
  */
 Cypress.Commands.add('obterUsuarioAleatorio', () => {
   return cy.listarUsuarios().then((response) => {
-      return response.body.usuarios[Math.floor(Math.random() * response.body.quantidade)];
+      let id_admin = response.body.usuarios.findIndex(usuario => usuario.email === admin.email);
+      response.body.usuarios.splice(id_admin, 1);
+      return response.body.usuarios[Math.floor(Math.random() * response.body.usuarios.length)];
   });
 });
